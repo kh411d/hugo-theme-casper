@@ -1,4 +1,5 @@
-    {{ range .Data.Pages }}
+   {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+  {{ range $paginator.Pages }}
         {{if eq .Type "index" }}
         <div class="index-content post">
         {{.Content}}
