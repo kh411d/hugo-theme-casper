@@ -5,7 +5,23 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    {{ template "_internal/twitter_cards.html" . }}
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:title" content="{{ .Title }}"/>
+    <meta name="twitter:description" content="{{if .IsPage}}{{ .Summary }}{{ else }}{{ .Site.Params.description }}{{ end }}"/>
+    <meta name="twitter:site" content="@{{ .Site.Params.twitterName }}"/>
+    
+    
+    {{ if .Params.image }}
+      <!-- Twitter summary card with large image must be at least 280x150px -->
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:image" content="{{ .Params.image  | relURL }}"/>
+    {{ else }}
+      {{if .Site.Params.cover}}
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:image" content="{{ .Site.Params.cover | relURL}}"/>
+      {{end}}
+    {{ end }}
 
   	<meta property="og:title" content="{{ if ne .URL "/" }}{{ .Title }} &middot; {{ end }}{{ .Site.Title }}" />
   	<meta property="og:site_name" content="{{ .Site.Title }}" />
@@ -13,11 +29,9 @@
 
     {{if .Params.image }}
        <meta property="og:image" content="{{ .Params.image | relURL}}"/>
-       <meta name="twitter:image" content="{{ .Params.image  | relURL }}"/>
     {{else}}
         {{if .Site.Params.cover}}
             <meta property="og:image" content="{{ .Site.Params.cover | relURL}}"/>
-            <meta name="twitter:image" content="{{ .Site.Params.cover | relURL }}"/>
         {{end}}
     {{end}}
 
