@@ -1,0 +1,15 @@
+{{/* DEFAULTS */}}
+{{ $user    := "kh411d" }}
+{{ $height  := 300 }}
+{{ $tab     := "html,result" }}{{/* html|css|js|result */}}
+{{ $theme   := "dark" }}{{/* create on codepen.io */}}
+<script
+    data-slug-hash="{{ .Get "id" }}"
+    data-user="{{ or (.Get "user") $user }}"
+    data-height="{{ or (.Get "height") $height }}"
+    data-default-tab="{{ or (.Get "tab") $tab }}"
+    data-theme-id="{{ or (.Get "theme") $theme }}"
+    class='codepen'
+    async
+    src="//static.codepen.io/assets/embed/ei.js"
+></script>

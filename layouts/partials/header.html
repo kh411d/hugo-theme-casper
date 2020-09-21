@@ -141,6 +141,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P4GNFJ5');</script>
 <!-- End Google Tag Manager -->
+
+{{ if .HasShortcode "github_button" }}
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  {{end}}
 </head>
 <body class="nav-closed">
 <!-- Google Tag Manager (noscript) -->
